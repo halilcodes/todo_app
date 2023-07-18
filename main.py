@@ -5,13 +5,16 @@ def show_list(todo_list):
     print()
 
 
-try:
-    with open("todo_list.txt", "r+", encoding="utf8") as file:
-        todos = file.readlines()
-except FileNotFoundError:
-    with open("todo_list.txt", "w", encoding="utf8") as file:
-        todos = []
+def get_todos(filepath="todo_list.txt"):
+    try:
+        with open(filepath, "r", encoding="utf8") as f:
+            return f.readlines()
+    except FileNotFoundError:
+        with open(filepath, "w", encoding="utf8") as _:  # create the file if not exists.
+            return []
 
+
+todos = get_todos()
 while True:
     user_action = input("Type add, show, edit, complete or exit: ").casefold().strip()
     if user_action.startswith('add'):
