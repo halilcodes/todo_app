@@ -17,6 +17,11 @@ def get_todos(filepath=FILEPATH):
             return []
 
 
+def write_todos(todo_list, filepath=FILEPATH):
+    with open(FILEPATH, "w", encoding="utf8") as file:
+        file.writelines(todo_list)
+
+
 if __name__ == "__main__":
     print("hello")
     print(get_todos())

@@ -18,6 +18,7 @@ window = sg.Window('Window Title', layout)
 # Display and interact with the Window using an Event Loop
 while True:
     event, values = window.read()
+    print(event, "\n", values)
     # See if user wants to quit or window was closed
     if event == sg.WINDOW_CLOSED or event == 'Quit':
         break
