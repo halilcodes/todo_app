@@ -1,6 +1,10 @@
 from functions import get_todos, show_list
+import time
 
 todos = get_todos()
+time_now = time.strftime("%b %d, %Y %H:%M:%S")
+print(f"It is: {time_now}")
+
 while True:
     user_action = input("Type add, show, edit, complete or exit: ").casefold().strip()
     if user_action.startswith('add'):

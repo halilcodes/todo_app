@@ -1,3 +1,6 @@
+FILEPATH = "todos.txt"
+
+
 def show_list(todo_list):
     print(todo_list)
     for num, do in enumerate(todo_list):
@@ -5,7 +8,7 @@ def show_list(todo_list):
     print()
 
 
-def get_todos(filepath="todo_list.txt"):
+def get_todos(filepath=FILEPATH):
     try:
         with open(filepath, "r+", encoding="utf8") as f:
             return f.readlines()
