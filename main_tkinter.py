@@ -6,48 +6,30 @@ window = tk.Tk()
 window.title("To Do App")
 window.geometry("640x480")
 
+
 todos = get_todos()
+print(todos)
 time_now = time.strftime("%b %d, %Y %H:%M:%S")
+text_ = f"It is {time_now}"
+time_label = tk.Label(window, text=text_)
+time_label.grid(row=0, column=0, sticky="w")
+
+presentation_label = tk.Label(window, text="Enter a To-Do: ")
+presentation_label.grid(row=1, column=0)
+
+textBox = tk.Text(window, height=1, width=50)
+textBox.grid(row=2, column=0)
+
+addButton = tk.Button(window, text="Add")
+addButton.grid(row=2, column=1, padx=30)
+
+todoBox = tk.Listbox(window)
+todoBox.insert(tk.END, *todos)
+todoBox.grid(row=3, column=0, sticky="w")
+
+
 print(f"It is: {time_now}")
 
-while True:
-    user_action = input("Type add, show, edit, complete or exit: ").casefold().strip()
-    if user_action.startswith('add'):
-        if user_action > 'add':
-            todo = user_action[4:].strip() + "\n"
-            todos.append(todo)
-        else:
-            todo = input('Enter a todo: ') + "\n"
-            todos.append(todo)
-        # with open("todo_list.txt", "a", encoding="utf8") as file:
-        #     file.writelines(todo)
-    elif user_action.startswith('show'):
-        show_list(todos)
-    elif user_action.startswith('edit'):
-        show_list(todos)
-        try:
-            index = int(user_action[5:])
-        except ValueError:
-            index = int(input("Select list item to edit: "))
-        new_input = input("Enter new list item: ") + "\n"
-        print(f"{todos[index]} changed with {new_input}")
-        todos[index] = new_input
-
-    elif user_action.startswith('complete'):
-        show_list(todos)
-        try:
-            index = int(input("Select list item that you completed: "))
-            todos.pop(index)
-        except (ValueError, IndexError):
-            print("Invalid input.")
-            continue
-    elif user_action == "exit":
-        break
-    else:
-        print('Unknown command!')
-
-with open("todo_list.txt", "w", encoding="utf8") as file:
-    file.writelines(todos)
 print('Bye!')
 
 window.mainloop()

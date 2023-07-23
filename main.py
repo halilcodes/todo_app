@@ -9,7 +9,7 @@ while True:
     user_action = input("Type add, show, edit, complete or exit: ").casefold().strip()
     if user_action.startswith('add'):
         if user_action > 'add':
-            todo = user_action[4:].strip() + "\n"
+            todo = user_action[4:].strip().title() + "\n"
             todos.append(todo)
         else:
             todo = input('Enter a todo: ') + "\n"

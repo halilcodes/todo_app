@@ -1,4 +1,4 @@
-FILEPATH = "todos.txt"
+FILEPATH = "todo_list.txt"
 
 
 def show_list(todo_list):
