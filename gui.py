@@ -8,6 +8,7 @@ time_now = time.strftime("%b %d, %Y %H:%M:%S")
 todos = functions.get_todos()
 
 # Define the window's contents
+sg.theme("Black")
 show_time = sg.Text(f"Time is {time_now}")
 label1 = sg.Text("Enter a To-Do")
 inputBox = sg.InputText(tooltip="Enter todo", key="todo")
