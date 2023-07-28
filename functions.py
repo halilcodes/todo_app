@@ -11,7 +11,10 @@ def show_list(todo_list):
 def get_todos(filepath=FILEPATH):
     try:
         with open(filepath, "r+", encoding="utf8") as f:
-            return f.readlines()
+            my_list = f.readlines()
+            if not my_list[-1].endswith("\n"):
+                my_list[-1] += "\n"
+            return my_list
     except FileNotFoundError:
         with open(filepath, "w", encoding="utf8") as _:  # create the file if not exists.
             return []
